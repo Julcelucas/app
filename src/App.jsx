@@ -1,23 +1,24 @@
 import { useState } from "react";
 
 function App(){
-  const [contador, setContador] = useState(0)
+  const [email, setEmail] = useState("")
+
+  function enviarFormulario(e){
+    e.preventDefault()
+    alert(email)
+  }
 
   return(
-    <div>
-      <h1>{contador}</h1>
+    <form onSubmit={enviarFormulario}>
+      <input 
+      type="email" 
+      value={email} 
+      onChange={(e)=>
+      setEmail(e.target.value)}
+      />
 
-      <button onClick={()=>
-        setContador(contador + 1)}>
-      +
-      </button>
-
-      <button onClick={()=>
-      setContador(contador - 1)}>
-      -
-      </button>
-    </div>
+    <button type="submit">Enviar</button>  
+    </form>
   )
 }
-
 export default App
